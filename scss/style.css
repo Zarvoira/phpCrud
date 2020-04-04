@@ -1,0 +1,251 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 02-Apr-2020, 15:50:34
+    Author     : Agung Banar
+*/
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'segoe ui', roboto, oxygen, ubuntu, cantarell, 'fira sans', 'droid sans', 'helvetica neue', Arial, sans-serif;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: #ffffff;
+  margin: 0;
+}
+
+.navtop {
+  background-color: #3f69a8;
+  height: 10vh;
+  width: 100%;
+  border: 0;
+}
+
+.navtop div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 auto;
+  width: 5hv;
+  height: 100%;
+}
+
+.navtop div h1,
+.navtop div a {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.navtop div h1 {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  font-size: 24px;
+  padding: 0;
+  margin: 0;
+  margin-left: 20px;
+  color: #ecf0f6;
+  font-weight: normal;
+}
+
+.navtop div a {
+  padding: 0 20px;
+  text-decoration: none;
+  color: #c5d2e5;
+  font-weight: bold;
+}
+
+.navtop div a i {
+  padding: 2px 8px 0 0;
+}
+
+.navtop div a:hover {
+  color: #ecf0f6;
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.content h2 {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 0;
+  padding: 25px 0;
+  font-size: 22px;
+  border-bottom: 1px solid #ebebeb;
+  color: #666666;
+}
+
+.read .create-contact {
+  display: inline-block;
+  text-decoration: none;
+  background-color: #38b673;
+  font-weight: bold;
+  font-size: 14px;
+  color: #ffffff;
+  padding: 10px 15px;
+  margin: 15px 0;
+}
+
+.read .create-contact:hover {
+  background-color: #060aff;
+}
+
+.read .pagination {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.read .pagination a {
+  display: inline-block;
+  text-decoration: none;
+  background-color: #6e2722;
+  font-weight: bold;
+  color: #ffffff;
+  padding: 5px 10px;
+  margin: 15px 0 15px 5px;
+}
+
+.read .pagination a:hover {
+  background-color: #e40a0a;
+}
+
+.read table {
+  width: 100%;
+  padding-top: 1000px;
+  border-collapse: collapse;
+}
+
+.read table thead {
+  background-color: #ebeef1;
+  border-bottom: 1px solid #d3dae0;
+}
+
+.read table thead td {
+  padding: 10px;
+  font-weight: bold;
+  color: #767779;
+  font-size: 14px;
+}
+
+.read table tbody tr {
+  border-bottom: 1px solid #d3dae0;
+}
+
+.read table tbody tr:nth-child(even) {
+  background-color: #fbfcfc;
+}
+
+.read table tbody tr:hover {
+  background-color: #376ab7;
+}
+
+.read table tbody tr:hover td {
+  color: #ffffff;
+}
+
+.read table tbody tr:hover td:nth-child(1) {
+  color: #e40a0a;
+}
+
+.read table tbody tr td {
+  padding: 10px;
+}
+
+.read table tbody tr td:nth-child(1) {
+  color: #a5a7a9;
+}
+
+.read table tbody tr td.actions {
+  padding: 8px;
+  text-align: right;
+}
+
+.read table tbody tr td.actions .edit,
+.read table tbody tr td.actions .trash {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  text-align: right;
+  text-decoration: none;
+  color: #ffffff;
+  padding: 10px 12px;
+}
+
+.read table tbody tr td.actions .trash {
+  background-color: #b73737;
+}
+
+.read table tbody tr td.actions .trash:hover {
+  background-color: #a33131;
+}
+
+.read table tbody tr td.actions .edit {
+  background-color: #37afb7;
+}
+
+.read table tbody tr td.actions .edit:hover {
+  background-color: #319ca3;
+}
+
+.update form {
+  padding: 15px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: wrap;
+      flex-flow: wrap;
+}
+
+.update form label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 400px;
+  padding: 10px 0;
+  margin-right: 25px;
+}
+
+.update form input {
+  padding: 7px;
+  width: 400px;
+  margin-right: 25px;
+  margin-bottom: 0px;
+  border: 1px solid #cccccc;
+}
+
+.update form input[type='submit'] {
+  display: block;
+  background-color: #38b673;
+  border: 0;
+  font-weight: bold;
+  font-size: 14px;
+  color: #ffffff;
+  cursor: pointer;
+  width: 200px;
+  margin-top: 50px;
+  margin-left: 530px;
+}
+
+.update form input[type='submit']:hover {
+  background-color: #32a367;
+}
+/*# sourceMappingURL=style.css.map */
