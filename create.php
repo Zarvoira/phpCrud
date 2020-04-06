@@ -9,23 +9,34 @@ if (!empty($_POST)) {
     // Set-up the variables that are going to be inserted, we must check if the POST variables exist if not we can default them to blank
 
     // Check if POST variable "name" exists, if not default the value to blank, basically the same for all variables
-    
-    $name = isset($_POST['name']) ? $_POST['name'] : '';
-    $start = isset($_POST['start']) ? $_POST['start'] : '';
-    $shipped = isset($_POST['shipped']) ? $_POST['shipped'] : '';
-    $hand = isset($_POST['hand']) ? $_POST['hand'] : '';
-    $received = isset($_POST['received']) ? $_POST['received'] : '';
-    $min = isset($_POST['min']) ? $_POST['min'] : '';
 
-    // Insert new record into the contacts table
-    $stmt = $pdo->prepare('INSERT INTO `products` (`Prod_ID`, `Product_Name`, `Starting_Inventory`, `Inventory_Received`, `Inventory_Shipped`, `Inventory_OnHand`, `Minimum_Req`)'
-            . 'VALUES (NULL, ?, ?, ?, ?, ?, ?)');
-    $stmt->execute([$name, $start, $received, $shipped, $hand,$min]);
+    $name = filter_var(($_POST['name']), FILTER_SANITIZE_STRING);
+    $start = filter_var(($_POST['start']), FILTER_SANITIZE_NUMBER_INT);
+$shipped = filter_var(($_POST['shipped']), FILTER_SANITIZE_NUMBER_INT);
+$hand = filter_var(($_POST['hand']), FILTER_SANITIZE_NUMBER_INT);
+$received = filter_var(($_POST['received']), FILTER_SANITIZE_NUMBER_INT);
+$min = filter_var(($_POST['min']), FILTER_SANITIZE_STRING);
+
+
+
+/* Perform Query */
+$query = "INSERT INTO products (Prod_ID, Product_Name, Starting_Inventory, Inventory_Received, Inventory_Shipped, Inventory_OnHand, Minimum_Req) VALUES (NULL, :name, :start, :received, :shipped, :hand, :min)";
+$stmt = $pdo->prepare($query);
+$stmt->bindParam(":name", $name, PDO::PARAM_STR);
+$stmt->bindParam(":start", $start, PDO::PARAM_INT);
+$stmt->bindParam(":received", $received, PDO::PARAM_INT);
+$stmt->bindParam(":shipped", $shipped, PDO::PARAM_INT);
+$stmt->bindParam(":hand", $hand, PDO::PARAM_STR);
+$stmt->bindParam(":min", $min, PDO::PARAM_INT);
+
+$stmt->execute();
+    
+
     // Output message
     $msg = 'Created Successfully!';
 }
 ?>
-<?=template_header('Create')?>
+<?php include('header.php');?>
 
 
 
@@ -33,9 +44,9 @@ if (!empty($_POST)) {
 	<h2>Create Product</h2>
     <form action="create.php" method="post">
         <label for="id">Product</label>
-        <input type="text" name="name"  id="name">
+        <input type="text" name="name" required="required"  id="name">
          <label for="name">Start</label>
-        <input type="number" name="start" id="start">
+        <input type="number" name="start"required="required" id="start">
         <label for="Shipped">Shipped</label>
         <input type="number" name="shipped"  id="shipped">
         <label for="phone">On-Hand</label>
@@ -51,4 +62,4 @@ if (!empty($_POST)) {
     <?php endif; ?>
 </div>
 
-<?=template_footer()?>
+<?php include('footer.php');?>

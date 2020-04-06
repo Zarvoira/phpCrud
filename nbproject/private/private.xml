@@ -3,14 +3,26 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/PhpProject2/style.css</file>
+            <file>file:/C:/xampp/htdocs/PhpProject2/delete_purchase.php</file>
             <file>file:/C:/xampp/htdocs/PhpProject2/functions.php</file>
+            <file>file:/C:/xampp/htdocs/PhpProject2/update_order.php</file>
+            <file>file:/C:/xampp/htdocs/PhpProject2/update_purchase.php</file>
             <file>file:/C:/xampp/htdocs/PhpProject2/update.php</file>
+            <file>file:/C:/xampp/htdocs/PhpProject2/create_purchase.php</file>
+            <file>file:/C:/xampp/htdocs/PhpProject2/footer.php</file>
+            <file>file:/C:/xampp/htdocs/PhpProject2/chart.js</file>
+            <file>file:/C:/xampp/htdocs/PhpProject2/create_order.php</file>
+            <file>file:/C:/xampp/htdocs/PhpProject2/header.php</file>
+            <file>file:/C:/xampp/htdocs/PhpProject2/css/style.css</file>
             <file>file:/C:/xampp/htdocs/PhpProject2/read.php</file>
+            <file>file:/C:/xampp/htdocs/PhpProject2/delete_order.php</file>
             <file>file:/C:/xampp/htdocs/PhpProject2/scss/style.scss</file>
             <file>file:/C:/xampp/htdocs/PhpProject2/create.php</file>
             <file>file:/C:/xampp/htdocs/PhpProject2/delete.php</file>
+            <file>file:/C:/xampp/htdocs/PhpProject2/order.php</file>
+            <file>file:/C:/xampp/htdocs/PhpProject2/scss/style.css</file>
             <file>file:/C:/xampp/htdocs/PhpProject2/index.php</file>
+            <file>file:/C:/xampp/htdocs/PhpProject2/purchase.php</file>
         </group>
     </open-files>
 </project-private>

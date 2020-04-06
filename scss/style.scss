@@ -199,3 +199,26 @@ body {
 .update form input[type='submit']:hover {
   background-color: #32a367;
 }
+
+input[type='text'],
+select {
+  padding: 7px;
+  width: 400px;
+  margin-right: 25px;
+  margin-bottom: 0px;
+  border: 1px solid #cccccc;
+}
+
+/**
+ * Footer Styles
+ */
+
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
+}

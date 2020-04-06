@@ -5,19 +5,35 @@ $msg = '';
 // Check if the contact id exists, for example update.php?id=1 will get the contact with the id of 1
 if (isset($_GET['id'])) {
     if (!empty($_POST)) {
-        // This part is similar to the create.php, but instead we update a record and not insert
-      
-    $name = isset($_POST['name']) ? $_POST['name'] : '';
-    $start = isset($_POST['start']) ? $_POST['start'] : '';
-    $shipped = isset($_POST['shipped']) ? $_POST['shipped'] : '';
-    $hand = isset($_POST['hand']) ? $_POST['hand'] : '';
-    $received = isset($_POST['received']) ? $_POST['received'] : '';
-    $min = isset($_POST['min']) ? $_POST['min'] : '';
 
-        // Update the record
-        $stmt = $pdo->prepare('UPDATE products SET  Product_Name = ?, Starting_Inventory = ?, Inventory_Received = ?, Inventory_Shipped = ?, Inventory_OnHand = ? ,Minimum_Req =? WHERE Prod_ID = ?');
-        $stmt->execute([$name, $start, $received, $shipped, $hand,$min, $_GET['id']]);
-        $msg = 'Updated Successfully!';
+$id=$_GET['id'];
+$name = filter_var(($_POST['name']), FILTER_SANITIZE_STRING);
+$start = filter_var(($_POST['start']), FILTER_SANITIZE_NUMBER_INT);
+$shipped = filter_var(($_POST['shipped']), FILTER_SANITIZE_NUMBER_INT);
+$hand = filter_var(($_POST['hand']), FILTER_SANITIZE_NUMBER_INT);
+$received = filter_var(($_POST['received']), FILTER_SANITIZE_NUMBER_INT);
+$min = filter_var(($_POST['min']), FILTER_SANITIZE_STRING);
+
+
+
+/* Perform Query */
+$query = "UPDATE products SET  Product_Name = :name, Starting_Inventory = :start, Inventory_Received = :received, Inventory_Shipped = :shipped, Inventory_OnHand = :hand ,Minimum_Req =:min WHERE Prod_ID = :id";
+$stmt = $pdo->prepare($query);
+$stmt->bindParam(":name", $name, PDO::PARAM_STR);
+$stmt->bindParam(":start", $start, PDO::PARAM_INT);
+$stmt->bindParam(":received", $received, PDO::PARAM_INT);
+$stmt->bindParam(":shipped", $shipped, PDO::PARAM_INT);
+$stmt->bindParam(":hand", $hand, PDO::PARAM_STR);
+$stmt->bindParam(":min", $min, PDO::PARAM_INT);
+$stmt->bindParam(":id", $id, PDO::PARAM_INT);
+
+
+$stmt->execute();
+
+$msg = 'updated successfully';
+
+
+      
     }
     
     
@@ -34,8 +50,7 @@ if (isset($_GET['id'])) {
 ?>
 
 
-<?=template_header('Read')?>
-
+<?php include('header.php');?>
 <div class="content update">
 	<h2>Update Product #<?=$product['Prod_ID']?></h2>
     <form action="update.php?id=<?=$product['Prod_ID']?>" method="post">
@@ -51,11 +66,11 @@ if (isset($_GET['id'])) {
         <label for="created">min</label>
         <input type="number" name="received" placeholder="Employee" value="<?=$product['Inventory_Received']?>" id="received" type="number">
         <input type="number" name="min" placeholder="2025550143" value="<?=$product['Minimum_Req']?>" id="min" type="number">
-        <input type="submit" value="Create">
+        <input type="submit" value="Update">
     </form>
     <?php if ($msg): ?>
     <p><?=$msg?></p>
     <?php endif; ?>
 </div>
 
-<?=template_footer()?>
+<?php include('footer.php');?>

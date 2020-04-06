@@ -19,11 +19,10 @@ $purchases = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $num_purchases = $pdo->query('SELECT COUNT(*) FROM purchases')->fetchColumn();
 ?>
 
-<?=template_header('Read')?>
-
+<?php include('header.php');?>
 <div class="content read">
 	<h2>Display All purchases</h2>
-	<a href="create.php" class="create-contact">New Purchase Entry</a>
+	<a href="create_purchase.php" class="create-contact">New Purchase Entry</a>
 	<table id="keywords">
         <thead>
             <tr>
@@ -45,8 +44,8 @@ $num_purchases = $pdo->query('SELECT COUNT(*) FROM purchases')->fetchColumn();
                 <td><?=$purchase['Purchase_Date']?></td>
                 <td class="actions">
                     
-                    <a href="update.php?id=<?=$purchase['Prod_ID']?>" class="edit"><i class="fas fa-pen fa-xs"></i></a>
-                    <a onclick="return confirm('Are you sure you want to delete this entry?')" href="delete.php?id=<?=$purchase['Prod_ID']?> " class="trash"><i class="fas fa-trash fa-xs"></i></a>
+                    <a href="update_purchase.php?id=<?=$purchase['Purchase_id']?>" class="edit"><i class="fas fa-pen fa-xs"></i></a>
+                    <a onclick="return confirm('Are you sure you want to delete this entry?')" href="delete_Purchase.php?id=<?=$purchase['Purchase_id']?> " class="trash"><i class="fas fa-trash fa-xs"></i></a>
                 
                 </td>
             </tr>
@@ -63,4 +62,4 @@ $num_purchases = $pdo->query('SELECT COUNT(*) FROM purchases')->fetchColumn();
 	</div>
 </div>
 
-<?=template_footer()?>
+<?php include('footer.php');?>

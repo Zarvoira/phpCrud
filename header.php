@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html>
 	<head>
@@ -7,12 +5,12 @@
 		<title></title>
 		<link href="./scss/style.css" rel="stylesheet" type="text/css">
          <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+		
 		<script src="chart.js"></script>
 
 	</head>
-	<body onload='ajaxBarChart()'>
+	<body>
     <nav class="navtop">
     	<div>
 			<a href="index.php">
@@ -25,14 +23,4 @@
 		</div>
 		
     </nav>
-<div class="content">
-<canvas id="myChart"></canvas>
 
-
-</div>
-
-<script src="chart.js"></script>
-</div>
-
-
-<?php include('footer.php');?>

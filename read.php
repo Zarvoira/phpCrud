@@ -8,7 +8,7 @@ $page = isset($_GET['page']) && is_numeric($_GET['page']) ? (int)$_GET['page'] :
 $records_per_page = 5;
 
 // Prepare the SQL statement and get records from our products table, LIMIT will determine the page
-$stmt = $pdo->prepare('SELECT * FROM products ORDER BY Prod_id LIMIT :current_page, :record_per_page');
+$stmt = $pdo->prepare('SELECT Prod_ID,Product_Name,Starting_Inventory,Inventory_Received,Inventory_Shipped,Minimum_Req,(Starting_Inventory+Inventory_Received-Inventory_Shipped) AS Inventory_OnHands FROM products ORDER BY Prod_id LIMIT :current_page, :record_per_page');
 $stmt->bindValue(':current_page', ($page-1)*$records_per_page, PDO::PARAM_INT);
 $stmt->bindValue(':record_per_page', $records_per_page, PDO::PARAM_INT);
 $stmt->execute();
@@ -19,8 +19,7 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $num_products = $pdo->query('SELECT COUNT(*) FROM products')->fetchColumn();
 ?>
 
-<?=template_header('Read')?>
-
+<?php include('header.php');?>
 <div class="content read">
 	<h2>Display All products</h2>
 	<a href="create.php" class="create-contact">Create product</a>
@@ -30,9 +29,9 @@ $num_products = $pdo->query('SELECT COUNT(*) FROM products')->fetchColumn();
                 <td>id</td>
                 <td>Name</td>
                 <td>Starting Inventory</td>
-                <td>Inventory Shipped</td>
+                <td> Inventory On Received</td>
+                <td> Inventory Shipped</td>
                 <td>Inventory On hand</td>
-                <td>Inventory On Received</td>
                 <td>Minimum Required</td>
                 <td></td>
             </tr>
@@ -43,9 +42,9 @@ $num_products = $pdo->query('SELECT COUNT(*) FROM products')->fetchColumn();
                 <td><?=$product['Prod_ID']?></td>
                 <td><?=$product['Product_Name']?></td>
                 <td><?=$product['Starting_Inventory']?></td>
-                <td><?=$product['Inventory_Shipped']?></td>
-                <td><?=$product['Inventory_OnHand']?></td>
                 <td><?=$product['Inventory_Received']?></td>
+                <td><?=$product['Inventory_Shipped']?></td>
+                <td><?=$product['Inventory_OnHands']?></td>
                 <td><?=$product['Minimum_Req']?></td>
                 <td class="actions">
                     
@@ -67,4 +66,4 @@ $num_products = $pdo->query('SELECT COUNT(*) FROM products')->fetchColumn();
 	</div>
 </div>
 
-<?=template_footer()?>
+<?php include('footer.php');?>
